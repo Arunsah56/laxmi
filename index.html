@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For My Dearest Sister Laxmi</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Montserrat:wght@400;600&display=swap');
+        
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #fff5f5;
+            font-family: 'Montserrat', sans-serif;
+            overflow-x: hidden;
+            perspective: 1000px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        
+        .card-container {
+            position: relative;
+            width: 100%;
+            max-width: 550px;
+            padding: 20px;
+            z-index: 1;
+        }
+        
+        .card {
+            position: relative;
+            width: 100%;
+            background: linear-gradient(135deg, #ffffff, #fff9f9);
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            transform-style: preserve-3d;
+            transition: transform 0.5s ease;
+            overflow: hidden;
+            border: 1px solid rgba(255, 192, 203, 0.3);
+        }
+        
+        /* Running Light Effect */
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, 
+                transparent, 
+                #ff6b91, 
+                #ffb6c1, 
+                #ffccd5, 
+                #ff6b91, 
+                transparent);
+            animation: runLight 4s linear infinite;
+            z-index: 2;
+        }
+        
+        .card::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, 
+                transparent, 
+                #ff6b91, 
+                #ffb6c1, 
+                #ffccd5, 
+                #ff6b91, 
+                transparent);
+            animation: runLight 4s linear infinite reverse;
+            z-index: 2;
+        }
+        
+        .light-side {
+            position: absolute;
+            width: 3px;
+            height: 100%;
+            top: 0;
+            background: linear-gradient(to bottom, 
+                transparent, 
+                #ff6b91, 
+                #ffb6c1, 
+                #ffccd5, 
+                #ff6b91, 
+                transparent);
+            z-index: 2;
+        }
+        
+        .light-left {
+            left: 0;
+            animation: runLightVertical 4s linear infinite;
+        }
+        
+        .light-right {
+            right: 0;
+            animation: runLightVertical 4s linear infinite reverse;
+        }
+        
+        @keyframes runLight {
+            0% {
+                transform: translateX(-100%);
+            }
+            100% {
+                transform: translateX(100%);
+            }
+        }
+        
+        @keyframes runLightVertical {
+            0% {
+                transform: translateY(-100%);
+            }
+            100% {
+                transform: translateY(100%);
+            }
+        }
+        
+        .card:hover {
+            transform: rotateY(5deg) rotateX(5deg);
+        }
+        
+        .card-inner::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,215,215,0.2) 0%, rgba(255,255,255,0) 70%);
+            transform: rotate(30deg);
+            z-index: -1;
+        }
+        
+        h1 {
+            font-family: 'Dancing Script', cursive;
+            color: #d65db1;
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .message {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: #555;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        
+        .signature {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.8rem;
+            text-align: right;
+            color: #ff6b91;
+            margin-top: 30px;
+        }
+        
+        .flower {
+            position: absolute;
+            opacity: 0.7;
+            z-index: -1;
+            animation: float 6s infinite ease-in-out;
+        }
+        
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0) rotate(0deg);
+            }
+            50% {
+                transform: translateY(-20px) rotate(5deg);
+            }
+        }
+        
+        .hearts {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        .heart {
+            position: absolute;
+            font-size: 1.5rem;
+            color: rgba(255, 105, 180, 0.6);
+            animation: falling 10s linear infinite;
+            opacity: 0;
+        }
+        
+        @keyframes falling {
+            0% {
+                transform: translateY(-10vh) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(110vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+        
+        .open-btn {
+            display: block;
+            margin: 0 auto;
+            padding: 12px 30px;
+            background: linear-gradient(45deg, #ff9a9e, #fad0c4);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(255, 105, 180, 0.3);
+        }
+        
+        .open-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(255, 105, 180, 0.4);
+        }
+        
+        .hidden {
+            display: none;
+        }
+        
+        .photo-frame {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin: 20px auto;
+            border: 5px solid #ffb6c1;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+        
+        .photo-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: #f00;
+            opacity: 0;
+        }
+        
+        .floating-text {
+            animation: floatText 3s infinite ease-in-out;
+        }
+        
+        @keyframes floatText {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+        
+        .music-note {
+            position: absolute;
+            font-size: 1.2rem;
+            color: rgba(255, 105, 180, 0.7);
+            animation: floatNote 4s linear infinite;
+        }
+        
+        @keyframes floatNote {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="card-container">
+        <div class="card">
+            <div class="light-side light-left"></div>
+            <div class="light-side light-right"></div>
+            
+            <div id="initial-view">
+                <h1>For My Dearest Sister Laxmi</h1>
+                <div class="photo-frame">
+                    <!-- Replace with your sister's photo or a placeholder -->
+                    <img src="https://scontent.fluh2-1.fna.fbcdn.net/v/t39.30808-6/471269051_122145876440358045_1309941312730315165_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=cc71e4&_nc_ohc=Q95byK4mYNwQ7kNvwGxc-wO&_nc_oc=Adlbe5EZ_GHwcitiHevmSJlOBXfjxfTGbHqc9UZdWpjtiqJ8JLmJb2nJN4p5fX3ysISZEm7ywMwCKpa5rwF1i41P&_nc_zt=23&_nc_ht=scontent.fluh2-1.fna&_nc_gid=7IbqryLlABVSRmVHuFLqcg&oh=00_AfGyiUEm0x9eGFxzpE53mtl2Po0kEgANGtxsgExWBNExUA&oe=6809B226" alt="Sister Laxmi">
+                </div>
+                <p class="message">Click the button below to see my special message for you!</p>
+                <button class="open-btn" onclick="openCard()">Open Card</button>
+            </div>
+            
+            <div id="main-card" class="hidden">
+                <h1 class="floating-text">Thank You, Laxmi!</h1>
+                <div class="message">
+                    <p>My dearest sister,</p>
+                    <p>Words cannot express how grateful I am to have you in my life. You've been my constant support, my guiding light, and my best friend through everything.</p>
+                    <p>Your kindness, wisdom, and unconditional love have shaped me in ways you can't imagine. Every little thing you do for me means the world.</p>
+                    <p>Today, I just want to say thank you for being you. Thank you for all the sacrifices you've made, for all the times you've lifted me up, and for loving me even when I'm difficult.</p>
+                    <p>Timi sochna sakdai nau teti malai ramro fell hudai  x jaba timi vaniyau dai kehi hudai n and sab thik hun x tesaile maile soche ali differently Thanks van xu </p>
+                    <p>You're not just my sister - you're my blessing, my inspiration, and my heart.</p>
+                    <p>With lot's of love,</p>
+                </div>
+                <div class="signature">Your Loving Brother</div>
+                <div class="signature">_._ARUN_._</div>
+                
+                <div class="hearts" id="hearts-container"></div>
+                <div id="confetti-container"></div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Create flowers
+        function createFlowers() {
+            const flowers = ['🌸', '🌺', '🌻', '🌹', '🌼', '🌷'];
+            const card = document.querySelector('.card');
+            
+            for (let i = 0; i < 15; i++) {
+                const flower = document.createElement('div');
+                flower.className = 'flower';
+                flower.textContent = flowers[Math.floor(Math.random() * flowers.length)];
+                flower.style.left = Math.random() * 100 + '%';
+                flower.style.top = Math.random() * 100 + '%';
+                flower.style.fontSize = (Math.random() * 20 + 10) + 'px';
+                flower.style.animationDelay = Math.random() * 5 + 's';
+                card.appendChild(flower);
+            }
+        }
+        
+        // Create floating hearts
+        function createHearts() {
+            const container = document.getElementById('hearts-container');
+            
+            for (let i = 0; i < 30; i++) {
+                const heart = document.createElement('div');
+                heart.className = 'heart';
+                heart.innerHTML = '❤️';
+                heart.style.left = Math.random() * 100 + '%';
+                heart.style.animationDelay = Math.random() * 10 + 's';
+                heart.style.fontSize = (Math.random() * 20 + 10) + 'px';
+                container.appendChild(heart);
+            }
+        }
+        
+        // Create music notes
+        function createMusicNotes() {
+            const notes = ['♪', '♫', '♩', '♬', '♭', '♮'];
+            const card = document.querySelector('.card');
+            
+            for (let i = 0; i < 10; i++) {
+                const note = document.createElement('div');
+                note.className = 'music-note';
+                note.textContent = notes[Math.floor(Math.random() * notes.length)];
+                note.style.left = Math.random() * 100 + '%';
+                note.style.bottom = '0';
+                note.style.animationDelay = Math.random() * 4 + 's';
+                card.appendChild(note);
+            }
+        }
+        
+        // Create confetti explosion
+        function createConfetti() {
+            const colors = ['#ff6b6b', '#4ecdc4', '#45aaf2', '#a55eea', '#ffda79', '#ff9ff3'];
+            const container = document.getElementById('confetti-container');
+            
+            for (let i = 0; i < 100; i++) {
+                const confetti = document.createElement('div');
+                confetti.className = 'confetti';
+                confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                confetti.style.left = Math.random() * 100 + '%';
+                confetti.style.top = -10 + 'px';
+                confetti.style.width = (Math.random() * 8 + 4) + 'px';
+                confetti.style.height = (Math.random() * 8 + 4) + 'px';
+                confetti.style.transform = `rotate(${Math.random() * 360}deg)`;
+                
+                const animationDuration = Math.random() * 3 + 2;
+                confetti.style.animation = `falling ${animationDuration}s linear forwards`;
+                confetti.style.animationDelay = Math.random() * 0.5 + 's';
+                
+                container.appendChild(confetti);
+            }
+        }
+        
+        // Open card function
+        function openCard() {
+            document.getElementById('initial-view').classList.add('hidden');
+            document.getElementById('main-card').classList.remove('hidden');
+            createHearts();
+            createMusicNotes();
+            createConfetti();
+            
+            // Play a sound (optional)
+            const audio = new Audio('https://www.soundjay.com/human/sounds/applause-01.mp3');
+            audio.volume = 0.3;
+            audio.play();
+        }
+        
+        // Initialize
+        window.onload = function() {
+            createFlowers();
+        };
+    </script>
+</body>
+</html>
